@@ -35,9 +35,9 @@ const JobInfoScreen = ({ route, navigation }) => {
     <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
       {/* Header Section */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+        {/* <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
           <Text style={[styles.backButtonText, { fontSize: Sizes.FONT_SIZE_MD }]}>← Back</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <Text style={[styles.title, { fontSize: Sizes.FONT_SIZE_XXL }]}>{title}</Text>
         <Text style={[styles.company, { fontSize: Sizes.FONT_SIZE_LG }]}>{company}</Text>
         <Text style={[styles.location, { fontSize: Sizes.FONT_SIZE_MD }]}>{location}</Text>

@@ -65,7 +65,7 @@ const HomeScreen = ({ navigation }) => {
   const renderJobCard = ({ item }) => (
     <JobCard
       item={item}
-      onPress={() => navigation.navigate('JobInfo', { jobId: item.id })}
+      onPress={() => navigation.navigate('Info', { jobId: item.id })}
     />
   );
 
