@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, Dimensions, Modal, ScrollView } from 'react-native';
 import * as Colors from '../constants/colors';
 import * as Sizes from '../constants/sizes';
+import axios from 'axios';
+
 
 // Get screen dimensions for responsive sizing
 const { width, height } = Dimensions.get('window');
+
 
 // Sample job data (replace with actual data from your API)
 const jobData = [
@@ -50,6 +53,32 @@ const HomeScreen = ({ navigation }) => {
   const [filterModalVisible, setFilterModalVisible] = useState(false);
   const [selectedType, setSelectedType] = useState('');
   const [locationFilter, setLocationFilter] = useState('');
+  const [homeData, setHomeData] = useState([]);
+
+  useEffect(() => {
+    const fetchHomeJobsData = async () => {
+      console.log("Fetching home jobs data...");
+      const homeJobsData = await axios.get(
+        "https://jsearch.p.rapidapi.com/search",
+        {
+          params: { query: "Full Stack Developer", country: "in", page: "1" },
+          headers: {
+            "x-rapidapi-key":
+              "3e219ad44emsh09b0d8bbc8e6cc6p1fe0d9jsnd67b1b35a9b3",
+            "x-rapidapi-host": "jsearch.p.rapidapi.com",
+          },
+        }
+      );
+      setHomeData(homeJobsData.data.data);
+      console.log("hh", homeJobsData);
+    };
+    fetchHomeJobsData();
+  },[]);
+  useEffect(()=>{  
+    console.log(homeData[0]);
+    console.log(homeData.length);
+  },[homeData]);
+
 
   // Filter jobs based on search query and filters
   const filteredJobs = jobData.filter(job => {
