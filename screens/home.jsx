@@ -64,7 +64,7 @@ const HomeScreen = ({ navigation }) => {
           params: { query: "Full Stack Developer", country: "in", page: "1" },
           headers: {
             "x-rapidapi-key":
-              "3e219ad44emsh09b0d8bbc8e6cc6p1fe0d9jsnd67b1b35a9b3",
+              "23e7869f46msh9cdcb24f3778c8dp103de9jsn0f70c35987e1",
             "x-rapidapi-host": "jsearch.p.rapidapi.com",
           },
         }
@@ -75,7 +75,7 @@ const HomeScreen = ({ navigation }) => {
     fetchHomeJobsData();
   },[]);
   useEffect(()=>{  
-    console.log(homeData[0]);
+    console.log(homeData[0]["job_title"]);
     console.log(homeData.length);
   },[homeData]);
 
